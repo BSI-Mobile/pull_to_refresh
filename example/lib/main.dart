@@ -1,7 +1,6 @@
 import 'package:example/other/refresh_glowindicator.dart';
 import 'package:example/ui/MainActivity.dart';
 import 'package:example/ui/SecondActivity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'ui/indicator/base/IndicatorActivity.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
           return ScrollConfiguration(
-            child: child,
+            child: child ?? SizedBox(),
             behavior: RefreshScrollBehavior(),
           );
         },
@@ -66,9 +65,7 @@ class MyApp extends StatelessWidget {
           const Locale('ko'),
         ],
         locale: const Locale('zh'),
-        localeResolutionCallback:
-            (Locale locale, Iterable<Locale> supportedLocales) {
-          //print("change language");
+        localeResolutionCallback: (locale, supportedLocales) {
           return locale;
         },
         home: MainActivity(title: 'Pulltorefresh'),
