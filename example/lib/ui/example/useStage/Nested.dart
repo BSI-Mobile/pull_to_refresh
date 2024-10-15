@@ -11,7 +11,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart' hide RefreshIndicator;
    this bug I have no idea how to fix this,only waiting for flutter fix this bug.
  */
 class NestedRefresh extends StatefulWidget {
-  NestedRefresh({Key key}) : super(key: key);
+  NestedRefresh({Key? key}) : super(key: key);
 
   @override
   NestedRefreshState createState() => NestedRefreshState();
@@ -21,7 +21,7 @@ class NestedRefreshState extends State<NestedRefresh>
     with SingleTickerProviderStateMixin {
 //  RefreshMode  refreshing = RefreshMode.idle;
 //  LoadMode loading = LoadMode.idle;
-  RefreshController _refreshController;
+  late RefreshController _refreshController;
   List<Widget> data = [];
 
   void _getDatas() {
@@ -132,7 +132,7 @@ class _RefreshListViewState extends State<RefreshListView> {
       enablePullUp: true,
       header: WaterDropHeader(),
       footer: CustomFooter(
-        builder: (BuildContext context, LoadStatus mode) {
+        builder: (BuildContext context, LoadStatus? mode) {
           Widget body;
           if (mode == LoadStatus.idle) {
             body = Text("pull up load");

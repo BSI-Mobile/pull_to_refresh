@@ -1,4 +1,3 @@
-import 'package:example/other/refresh_glowindicator.dart';
 import 'package:example/ui/MainActivity.dart';
 import 'package:example/ui/SecondActivity.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return ScrollConfiguration(
             child: child ?? SizedBox(),
-            behavior: RefreshScrollBehavior(),
+            behavior: ScrollBehavior(),
           );
         },
         theme: ThemeData(

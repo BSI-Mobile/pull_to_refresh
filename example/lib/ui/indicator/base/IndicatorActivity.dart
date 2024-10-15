@@ -12,19 +12,19 @@ import '../../Item.dart';
 class IndicatorActivity extends StatefulWidget {
   final String title;
 
-  final Widget header;
+  final Widget? header;
 
-  final Widget footer;
+  final Widget? footer;
 
   final bool enableOverScroll;
   final bool reverse;
 
   IndicatorActivity(
-      {this.title,
+      {this.title = '',
       this.header,
-      this.reverse: false,
+      this.reverse = false,
       this.footer,
-      this.enableOverScroll: true});
+      this.enableOverScroll = true});
 
   @override
   State<StatefulWidget> createState() {
@@ -35,7 +35,7 @@ class IndicatorActivity extends StatefulWidget {
 
 class _IndicatorActivityState extends State<IndicatorActivity> {
   List<Widget> items = [];
-  RefreshController _refreshController;
+  late RefreshController _refreshController;
 
   void _init() {
     for (int i = 0; i < 15; i++) {
@@ -45,7 +45,7 @@ class _IndicatorActivityState extends State<IndicatorActivity> {
     }
   }
 
-  ScrollController _scrollController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {

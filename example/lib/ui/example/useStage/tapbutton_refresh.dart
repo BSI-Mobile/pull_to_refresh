@@ -5,7 +5,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /*
@@ -63,8 +62,8 @@ class _TapButtonRefreshExampleState extends State<TapButtonRefreshExample> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _refreshController.headerMode.addListener(() {
-      if (_refreshController.headerMode.value == RefreshStatus.idle) {
+    _refreshController.headerMode?.addListener(() {
+      if (_refreshController.headerMode?.value == RefreshStatus.idle) {
         Future.delayed(const Duration(milliseconds: 20)).then((value) {
           _enablePullDown = false;
           setState(() {});

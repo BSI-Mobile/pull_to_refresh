@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class Item extends StatefulWidget {
   final String title;
 
-  Item({this.title});
+  Item({this.title = ''});
 
   @override
   _ItemState createState() => _ItemState();

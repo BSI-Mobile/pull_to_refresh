@@ -139,7 +139,7 @@ class _QQChatListState extends State<QQChatList> {
                       controller: _scrollController,
                       axisDirection: AxisDirection.up,
                       viewportBuilder: (context, offset) {
-                        return ExpandedViewport(
+                        return Viewport(
                           offset: offset,
                           axisDirection: AxisDirection.up,
                           slivers: <Widget>[
@@ -183,9 +183,8 @@ class _QQChatListState extends State<QQChatList> {
                           margin: EdgeInsets.all(10.0),
                         ),
                       ),
-                      RaisedButton(
+                      ElevatedButton(
                         child: Text("发送"),
-                        color: Colors.blueAccent,
                         onPressed: () {
                           _scrollController.jumpTo(0.0);
                           data.insert(
@@ -218,7 +217,12 @@ class _MessageItem extends StatelessWidget {
   final bool isMe;
   final String url;
 
-  _MessageItem({this.content, this.author, this.isMe, this.url});
+  _MessageItem({
+    required this.content,
+    required this.author,
+    required this.isMe,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {

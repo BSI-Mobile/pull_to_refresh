@@ -4,9 +4,7 @@
  * Time:  2019-07-08 11:05
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../other/shimmer_indicator.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ShimmerIndicatorExample extends StatefulWidget {
@@ -45,17 +43,13 @@ class _ShimmerIndicatorExampleState extends State<ShimmerIndicatorExample> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return SmartRefresher(
-        header: ShimmerHeader(
-          text: Text(
-            "PullToRefresh",
-            style: TextStyle(color: Colors.grey, fontSize: 22),
-          ),
+        header: Text(
+          "PullToRefresh",
+          style: TextStyle(color: Colors.grey, fontSize: 22),
         ),
-        footer: ShimmerFooter(
-          text: Text(
-            "PullToRefresh",
-            style: TextStyle(color: Colors.grey, fontSize: 22),
-          ),
+        footer: Text(
+          "PullToRefresh",
+          style: TextStyle(color: Colors.grey, fontSize: 22),
         ),
         controller: _refreshController,
         enablePullUp: true,

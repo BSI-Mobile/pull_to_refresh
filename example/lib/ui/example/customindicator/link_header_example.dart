@@ -116,7 +116,7 @@ class _LinkHeaderExampleState extends State<LinkHeaderExample> {
 }
 
 class SimpleLinkBar extends StatefulWidget {
-  SimpleLinkBar({Key key}) : super(key: key);
+  SimpleLinkBar({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -127,8 +127,8 @@ class SimpleLinkBar extends StatefulWidget {
 
 class _SimpleLinkBarState extends State<SimpleLinkBar>
     with RefreshProcessor, SingleTickerProviderStateMixin {
-  RefreshStatus _status = RefreshStatus.idle;
-  AnimationController _animationController;
+  RefreshStatus? _status = RefreshStatus.idle;
+  late AnimationController _animationController;
 
   @override
   void dispose() {
@@ -168,7 +168,7 @@ class _SimpleLinkBarState extends State<SimpleLinkBar>
   }
 
   @override
-  void onModeChange(RefreshStatus mode) {
+  void onModeChange(RefreshStatus? mode) {
     // TODO: implement onModeChange
     super.onModeChange(mode);
     _status = mode;

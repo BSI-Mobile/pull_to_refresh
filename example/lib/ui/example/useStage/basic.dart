@@ -8,10 +8,7 @@
   the basic usage
 */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../Item.dart';
 
@@ -36,7 +33,7 @@ class _BasicExampleState extends State<BasicExample>
     with SingleTickerProviderStateMixin {
 //  int pageIndex = 0;
   List<String> data1 = [], data2 = [], data3 = [];
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -517,27 +514,18 @@ class _SwiperAndListState extends State<SwiperAndList> {
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
-          child: Swiper(
-              layout: SwiperLayout.CUSTOM,
-              customLayoutOption:
-                  new CustomLayoutOption(startIndex: -1, stateCount: 3)
-                      .addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
-                new Offset(-370.0, -40.0),
-                new Offset(0.0, 0.0),
-                new Offset(370.0, -40.0)
-              ]),
-              itemWidth: double.infinity,
-              itemHeight: 200,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 200,
-                  child: new Image.asset(
-                    "images/empty.png",
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-              itemCount: 10),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return Container(
+                height: 200,
+                child: new Image.asset(
+                  "images/empty.png",
+                  fit: BoxFit.cover,
+                ),
+              );
+            },
+            itemCount: 10,
+          ),
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(

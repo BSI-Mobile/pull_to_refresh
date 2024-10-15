@@ -4,7 +4,6 @@
     createTime: 2019-07-21 16:59
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -16,7 +15,7 @@ import 'test_indicator.dart';
 Future<void>? buildNotFullList(tester, bool reverse, Axis direction,
     {dynamic footer = const TestFooter(),
     dynamic header = const TestHeader(),
-    bool initload: false}) {
+    bool initload = false}) {
   final RefreshController _refreshController = RefreshController(
       initialLoadStatus: initload ? LoadStatus.loading : LoadStatus.idle);
   return tester.pumpWidget(MaterialApp(

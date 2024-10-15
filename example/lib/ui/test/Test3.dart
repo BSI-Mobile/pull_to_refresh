@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Test3 extends StatefulWidget {
-  Test3({Key key}) : super(key: key);
+  Test3({Key? key}) : super(key: key);
 
   @override
   Test3State createState() => Test3State();
@@ -16,29 +15,29 @@ class Test3State extends State<Test3> with TickerProviderStateMixin {
 //  LoadMode loading = LoadMode.idle;
   ValueNotifier<double> topOffsetLis = ValueNotifier(0.0);
   ValueNotifier<double> bottomOffsetLis = ValueNotifier(0.0);
-  RefreshController _refreshController;
+  late RefreshController _refreshController;
 
   List<Widget> data = [];
 
   void _getDatas() {
     data.add(Row(
       children: <Widget>[
-        FlatButton(
+        TextButton(
             onPressed: () {
               _refreshController
                   .requestRefresh(needCallback: false)
-                  .then((value) async {
+                  ?.then((value) async {
                 print("requestRefresh");
                 await Future.delayed(const Duration(milliseconds: 5000));
                 _refreshController.refreshCompleted();
               });
             },
             child: Text("请求刷新")),
-        FlatButton(
+        TextButton(
             onPressed: () {
               _refreshController
                   .requestLoading(needCallback: false)
-                  .then((value) async {
+                  ?.then((value) async {
                 print("requestLoading");
                 await Future.delayed(const Duration(milliseconds: 5000));
                 _refreshController.loadComplete();
@@ -198,7 +197,7 @@ class CirclePainter extends CustomClipper<Path> {
   final double offset;
   final bool up;
 
-  CirclePainter({this.offset, this.up});
+  CirclePainter({required this.offset, required this.up});
 
   @override
   Path getClip(Size size) {

@@ -5,7 +5,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart' hide RefreshIndicator;
 
 class Test1 extends StatefulWidget {
-  Test1({Key key}) : super(key: key);
+  Test1({Key? key}) : super(key: key);
 
   @override
   Test1State createState() => Test1State();
@@ -14,8 +14,8 @@ class Test1 extends StatefulWidget {
 class Test1State extends State<Test1> {
 //  RefreshMode  refreshing = RefreshMode.idle;
 //  LoadMode loading = LoadMode.idle;
-  RefreshController _refreshController;
-  ScrollController _scrollController;
+  late RefreshController _refreshController;
+  late ScrollController _scrollController;
   List<Widget> data = [];
 
   void _getDatas() {
@@ -38,8 +38,6 @@ class Test1State extends State<Test1> {
   void enterRefresh() {
     _refreshController.requestRefresh();
   }
-
-  void _onOffsetCallback(bool isUp, double offset) {}
 
   @override
   void initState() {

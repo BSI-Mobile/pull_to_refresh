@@ -5,7 +5,7 @@ import 'Test4.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
-  TestPage({Key key, this.title}) : super(key: key);
+  TestPage({Key? key, this.title = ''}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -25,8 +25,8 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage>
     with SingleTickerProviderStateMixin {
   int tabIndex = 0;
-  PageController _pageController;
-  List<Widget> views;
+  late PageController _pageController;
+  late List<Widget> views;
   GlobalKey<Test3State> example3Key = GlobalKey();
   GlobalKey<Test1State> example1Key = GlobalKey();
 
@@ -69,29 +69,25 @@ class _TestPageState extends State<TestPage>
         BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home,
-                    color: tabIndex == 0 ? Colors.blue : Colors.grey),
-                title: Text('Example1',
-                    style: TextStyle(
-                        color: tabIndex == 0 ? Colors.blue : Colors.grey))),
+              icon: Icon(Icons.home,
+                  color: tabIndex == 0 ? Colors.blue : Colors.grey),
+              label: 'Example1',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.cloud,
-                    color: tabIndex == 1 ? Colors.blue : Colors.grey),
-                title: Text('Example2',
-                    style: TextStyle(
-                        color: tabIndex == 1 ? Colors.blue : Colors.grey))),
+              icon: Icon(Icons.cloud,
+                  color: tabIndex == 1 ? Colors.blue : Colors.grey),
+              label: 'Example2',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.call,
-                    color: tabIndex == 2 ? Colors.blue : Colors.grey),
-                title: Text('Example3',
-                    style: TextStyle(
-                        color: tabIndex == 2 ? Colors.blue : Colors.grey))),
+              icon: Icon(Icons.call,
+                  color: tabIndex == 2 ? Colors.blue : Colors.grey),
+              label: 'Example3',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.transform,
-                    color: tabIndex == 3 ? Colors.blue : Colors.grey),
-                title: Text('Example4',
-                    style: TextStyle(
-                        color: tabIndex == 3 ? Colors.blue : Colors.grey))),
+              icon: Icon(Icons.transform,
+                  color: tabIndex == 3 ? Colors.blue : Colors.grey),
+              label: 'Example4',
+            ),
           ],
           onTap: (index) {
             _pageController.jumpToPage(index);

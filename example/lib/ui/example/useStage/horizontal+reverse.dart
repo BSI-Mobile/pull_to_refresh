@@ -30,8 +30,8 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
 
   void _fetch() {
     HTTP
-        .get(
-            'https://gank.io/api/v2/data/category/Girl/type/Girl/page/$indexPage/count/10')
+        .get(Uri.dataFromString(
+            'https://gank.io/api/v2/data/category/Girl/type/Girl/page/$indexPage/count/10'))
         .then((HTTP.Response response) {
       Map map = json.decode(response.body);
       return map["data"];
@@ -163,14 +163,10 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
       ],
     );
   }
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => false;
 }
 
 class Item1 extends StatefulWidget {
-  final String url;
+  final String? url;
 
   Item1({this.url});
 
@@ -185,7 +181,7 @@ class _ItemState extends State<Item1> {
     return FadeInImage(
       placeholder: AssetImage("images/empty.png"),
       image: NetworkImage(
-        widget.url,
+        widget.url ?? '',
       ),
     );
   }

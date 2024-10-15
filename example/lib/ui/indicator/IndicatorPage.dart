@@ -9,7 +9,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'base/IndicatorActivity.dart';
 
 class IndicatorPage extends StatefulWidget {
-  IndicatorPage({Key key, this.title}) : super(key: key);
+  IndicatorPage({Key? key, this.title = ''}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -27,7 +27,7 @@ class IndicatorPage extends StatefulWidget {
 }
 
 class _IndicatorPageState extends State<IndicatorPage> {
-  List<Widget> items;
+  List<Widget> items = [];
 
   @override
   Widget build(BuildContext context) {
@@ -181,13 +181,17 @@ class IndicatorItem extends StatefulWidget {
     return _IndicatorItemState();
   }
 
-  final Function onClick;
+  final void Function()? onClick;
 
   final String imgRes;
 
   final String title;
 
-  IndicatorItem({this.title, this.imgRes, this.onClick});
+  IndicatorItem({
+    required this.title,
+    required this.imgRes,
+    required this.onClick,
+  });
 }
 
 class _IndicatorItemState extends State<IndicatorItem> {

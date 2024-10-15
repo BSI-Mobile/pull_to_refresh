@@ -4,10 +4,8 @@
  * Time:  2019-06-26 16:28
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'
     hide RefreshIndicator, RefreshIndicatorState;
-import 'package:flutter/widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /*
@@ -36,11 +34,11 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
   @override
   void initState() {
     // TODO: implement initState
-    _refreshController1.headerMode.addListener(() {
+    _refreshController1.headerMode?.addListener(() {
       setState(() {});
     });
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _refreshController1.position.jumpTo(0);
+      _refreshController1.position?.jumpTo(0);
       setState(() {});
     });
     super.initState();
@@ -63,9 +61,13 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                 },
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.add), title: Text("二级刷新例子1")),
+                    icon: Icon(Icons.add),
+                    label: '二级刷新例子1',
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.border_clear), title: Text("二级刷新例子2"))
+                    icon: Icon(Icons.border_clear),
+                    label: '二级刷新例子2',
+                  )
                 ],
               )
             : null,
@@ -97,13 +99,13 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                               appBar: AppBar(),
                               body: Column(
                                 children: <Widget>[
-                                  RaisedButton(
+                                  ElevatedButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
                                     child: Text("点击这里返回上一页!"),
                                   ),
-                                  RaisedButton(
+                                  ElevatedButton(
                                     onPressed: () {
                                       _refreshController1.requestTwoLevel();
                                     },
@@ -145,7 +147,7 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                   slivers: <Widget>[
                     SliverToBoxAdapter(
                       child: Container(
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -166,7 +168,7 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                 onTwoLevel: (bool isOpen) {
                   if (isOpen) {
                     print("Asd");
-                    _refreshController2.position.hold(() {});
+                    _refreshController2.position?.hold(() {});
                     Navigator.of(context)
                         .push(MaterialPageRoute(
                             builder: (c) => Scaffold(
@@ -205,8 +207,7 @@ class TwoLevelWidget extends StatelessWidget {
           Center(
             child: Wrap(
               children: <Widget>[
-                RaisedButton(
-                  color: Colors.greenAccent,
+                ElevatedButton(
                   onPressed: () {},
                   child: Text("登陆"),
                 ),
@@ -221,7 +222,7 @@ class TwoLevelWidget extends StatelessWidget {
                 color: Colors.white,
               ),
               onTap: () {
-                SmartRefresher.of(context).controller.twoLevelComplete();
+                SmartRefresher.of(context)?.controller.twoLevelComplete();
               },
             ),
             alignment: Alignment.bottomLeft,
