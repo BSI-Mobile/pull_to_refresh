@@ -296,7 +296,7 @@ class RefreshPhysics extends ScrollPhysics {
             controller!.headerMode!.value == RefreshStatus.twoLeveling
                 ? 0.0
                 : position.maxScrollExtent,
-        tolerance: tolerance,
+        tolerance: toleranceFor(position),
       );
     }
     return super.createBallisticSimulation(position, velocity);
